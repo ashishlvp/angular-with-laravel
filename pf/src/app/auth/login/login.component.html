@@ -1,0 +1,57 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img
+        src="http://danielzawadzki.com/codepen/01/icon.svg"
+        id="icon"
+        alt="User Icon"
+      />
+    </div>
+    <div class="alert alert-danger" [hidden]="!error">
+      {{ error }}
+    </div>
+    <!-- Login Form -->
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="form-group">
+      <input
+        type="text"
+        id="email"
+        class="fadeIn second"
+        name="email"
+        placeholder="email"
+        [(ngModel)]="loginform.email"
+        name="email"
+        #name="ngModel"
+        required
+      />
+      <input
+        type="text"
+        id="password"
+        class="fadeIn third"
+        name="login"
+        placeholder="password"
+        [(ngModel)]="loginform.password"
+        name="password"
+        #name="ngModel"
+        required
+      />
+      <!-- <input type="submit" class="fadeIn fourth" value="Log In" /> -->
+      <button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        *ngIf="!isLoading"
+        class="fadeIn fourth"
+      >
+        Login
+      </button>
+      <span *ngIf="isLoading">{{ loading }}</span>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+  </div>
+</div>
